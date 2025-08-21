@@ -37,7 +37,7 @@ pip install -r requirements.txt
 python gui/app.py
 ```
 
-## 🔒 Security\
+## 🔒 Security
 Config file (readactus_config.json) contains encrypted passwords.
 
 Encryption key is stored locally in readactus.key. This should not be committed to source control.

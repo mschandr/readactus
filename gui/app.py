@@ -5,6 +5,8 @@ from mysql.connector import Error
 import json
 import os
 from cryptography.fernet import Fernet
+from db.schema import get_schema
+
 
 CONFIG_FILE = "readactus_config.json"
 KEY_FILE = "readactus.key"
@@ -22,7 +24,7 @@ class ReadactusApp:
         self.cipher = Fernet(self.key)
 
         self.create_widgets()
-        self.load_config()
+        #self.load_config()
 
     def load_or_create_key(self):
         if os.path.exists(KEY_FILE):
@@ -49,6 +51,9 @@ class ReadactusApp:
 
         test_left_btn = ttk.Button(left_frame, text="Test Connection", command=lambda: self.test_connection(self.left_db))
         test_left_btn.grid(row=5, column=0, columnspan=2, pady=10)
+        view_left_btn = ttk.Button(left_frame, text="View Schema", command=lambda: self.view_schema(self.left_db))
+        view_left_btn.grid(row=6, column=0, columnspan=2, pady=(0,10))
+
 
         # Right panel - Local DB
         right_frame = ttk.LabelFrame(main_frame, text="Local (Target) MySQL")
@@ -62,6 +67,8 @@ class ReadactusApp:
 
         test_right_btn = ttk.Button(right_frame, text="Test Connection", command=lambda: self.test_connection(self.right_db))
         test_right_btn.grid(row=5, column=0, columnspan=2, pady=10)
+        view_right_btn = ttk.Button(right_frame, text="View Schema", command=lambda: self.view_schema(self.right_db))
+        view_right_btn.grid(row=6, column=0, columnspan=2, pady=(0,10))
 
         # Save/Load config buttons
         config_frame = ttk.Frame(self.root)
@@ -75,6 +82,25 @@ class ReadactusApp:
         main_frame.columnconfigure(0, weight=1)
         main_frame.columnconfigure(1, weight=1)
         main_frame.rowconfigure(0, weight=1)
+
+    def view_schema(self, db_fields):
+        schema_text = get_schema(db_fields)
+
+        schema_window = tk.Toplevel(self.root)
+        schema_window.title("Database Schema")
+
+        text_widget = tk.Text(schema_window, wrap=tk.NONE)
+        text_widget.insert(tk.END, schema_text)
+        text_widget.config(state=tk.DISABLED)
+        text_widget.pack(fill=tk.BOTH, expand=True)
+
+        scrollbar_y = ttk.Scrollbar(schema_window, orient=tk.VERTICAL, command=text_widget.yview)
+        scrollbar_y.pack(side=tk.RIGHT, fill=tk.Y)
+        text_widget.config(yscrollcommand=scrollbar_y.set)
+
+        scrollbar_x = ttk.Scrollbar(schema_window, orient=tk.HORIZONTAL, command=text_widget.xview)
+        scrollbar_x.pack(side=tk.BOTTOM, fill=tk.X)
+        text_widget.config(xscrollcommand=scrollbar_x.set)
 
     def _add_labeled_entry(self, parent, label, row, show=None, default=""):
         ttk.Label(parent, text=label).grid(row=row, column=0, sticky="w", pady=5)
@@ -139,9 +165,9 @@ class ReadactusApp:
                     except Exception:
                         value = ''
                 field.insert(0, value)
-            messagebox.showinfo("Load Config", f"Configuration loaded from {CONFIG_FILE}")
         except Exception as e:
             messagebox.showerror("Load Config Failed", f"Error: {str(e)}")
+
 
 if __name__ == '__main__':
     root = tk.Tk()
