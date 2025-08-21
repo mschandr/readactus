@@ -56,3 +56,5 @@ Version 0.1 — Basic GUI, config save/load, encrypted secrets, and DB connectio
 
 ## ✨ Powered by Damian
 This tool is part of the broader Daemon tool family.
+
+This repository is open source under MIT. Pre-built binaries with freemium and premium features are distributed under a separate commercial license. See COMMERCIAL_LICENSE.md
