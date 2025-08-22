@@ -17,16 +17,20 @@ nav:
       - Commercial License: COMMERCIAL_LICENSE.md
 
 theme:
-  name: mkdocs
+  name: material
   features:
     - navigation.instant
     - navigation.tracking
     - toc.follow
     - content.code.copy
   palette:
-    - scheme: default
+    - scheme: material
       primary: indigo
       accent: indigo
+  hljs_languages:
+    - python
+    - bash
+
 
 markdown_extensions:
   - admonition
