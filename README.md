@@ -47,7 +47,7 @@ Readactus uses a **freemium licensing model**:
 Install dependencies:
 ```bash
 pip install -r requirements.txt
-````
+```
 
 ---
 

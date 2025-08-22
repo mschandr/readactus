@@ -13,12 +13,11 @@ Readactus is under active development. Security fixes will be applied to the mos
 ## Reporting a Vulnerability
 If you discover a security vulnerability in Readactus:
 
-1. **Do not open a public GitHub issue.**  
+1. **Do not open a public GitHub issue.**
    This may expose sensitive details to other users.
 
-2. **Contact us directly:**  
-   `mark [dot] dhas [at] gmail [dot] com`  
-   (replace `[dot]` with `.`)
+2. **Contact us directly:**
+    dot mark dot dhas plus readactus plus commercial at gmail dot dot com remove the first dot and one of the dots in the dot com
 
 3. Include in your report:
    - A clear description of the vulnerability
@@ -30,9 +29,9 @@ We aim to acknowledge reports within **72 hours** and will provide updates as we
 ---
 
 ## Data Handling
-- Readactus runs **entirely locally** on your machine.  
-- Database content and obfuscation results are **never transmitted** to external servers.  
-- Configuration files (`readactus_config.json`) are encrypted at rest, and the encryption key (`readactus.key`) is stored locally only.  
+- Readactus runs **entirely locally** on your machine.
+- Database content and obfuscation results are **never transmitted** to external servers.
+- Configuration files (`readactus_config.json`) are encrypted at rest, and the encryption key (`readactus.key`) is stored locally only.
 
 ---
 

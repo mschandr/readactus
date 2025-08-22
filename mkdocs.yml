@@ -1,0 +1,45 @@
+site_name: Readactus Docs
+site_description: Obfuscate production databases safely for dev/test — Readactus documentation.
+site_url: https://mschandr.github.io/readactus/
+repo_name: mschandr/readactus
+repo_url: https://github.com/mschandr/readactus
+edit_uri: edit/main/docs/
+
+nav:
+  - Home: index.md
+  - Project:
+      - Overview: overview.md     # was README.md
+      - Pricing: PRICING.md
+      - Roadmap: ROADMAP.md
+      - Security Policy: SECURITY.md
+      - Contributing: CONTRIBUTING.md
+      - Changelog: CHANGELOG.md
+      - Commercial License: COMMERCIAL_LICENSE.md
+
+theme:
+  name: mkdocs
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - toc.follow
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+
